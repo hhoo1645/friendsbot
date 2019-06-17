@@ -223,7 +223,6 @@ client.user.setGame(`Kure Friends`,"http://twitch.tv/S-F")
 client.user.setStatus("online")
 });
 
-});
 
 
 client.on("message", message => {
