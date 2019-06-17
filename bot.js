@@ -25,7 +25,7 @@ client.on('message', async msg => { // eslint-disable-line
 	if (command === `play`) {
 
 		const voiceChannel = msg.member.voiceChannel;
-		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي');
+		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
 		const permissions = voiceChannel.permissionsFor(msg.client.user);
 		if (!permissions.has('CONNECT')) {
 			
@@ -60,7 +60,7 @@ client.on('message', async msg => { // eslint-disable-line
 			        .setDescription(`**الرجآء من حضرتك إختيآر رقم المقطع** :
 ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 
-					.setFooter("Nefoo Friends");
+					.setFooter("Ninja");
 					msg.channel.sendEmbed(embed1).then(message =>{message.delete(20000)});
 					
 					// eslint-disable-next-line max-depth
@@ -86,7 +86,7 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 		}
 	} else if (command === `s`) {
 
-		if (!msg.member.voiceChannel) return msg.channel.send(' أنت لست بروم صوتي .');
+		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
 		if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لتجآوزه');
 		serverQueue.connection.dispatcher.end('تم تجآوز هذآ المقطع');
 		return undefined;
@@ -104,12 +104,12 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 		return undefined;
 	} else if (command === `vol`) {
 
-		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي . .');
-		if (!serverQueue) return msg.channel.send('لا يوجد شيء شغآل..');
+		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
+		if (!serverQueue) return msg.channel.send('لا يوجد شيء شغآل.');
 		if (!args[1]) return msg.channel.send(`:loud_sound: مستوى الصوت **${serverQueue.volume}**`);
 		serverQueue.volume = args[1];
 		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 50);
-		return msg.channel.send(`:speaker:تم تغير الصوت الي **${args[1]}**`);
+		return msg.channel.send(`:speaker: تم تغير الصوت الي **${args[1]}**`);
 	} else if (command === `np`) {
 
 		if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
@@ -133,17 +133,17 @@ ${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}
 		if (serverQueue && serverQueue.playing) {
 			serverQueue.playing = false;
 			serverQueue.connection.dispatcher.pause();
-			return msg.channel.send(!');
+			return msg.channel.send('تم إيقاف الموسيقى مؤقتا!');
 		}
-		return msg.channel.send('تم إيقاف الموسيقى مؤقتا.');
+		return msg.channel.send('لا يوجد شيء حالي ف العمل.');
 	} else if (command === "resume") {
 
 		if (serverQueue && !serverQueue.playing) {
 			serverQueue.playing = true;
 			serverQueue.connection.dispatcher.resume();
-			return msg.channel.send('ا يوجد شيء حالي ف العمل.!');
+			return msg.channel.send('استأنفت الموسيقى بالنسبة لك !');
 		}
-		return msg.channel.send('ا يوجد شيء حالي في العمل.');
+		return msg.channel.send('لا يوجد شيء حالي في العمل.');
 	}
 
 	return undefined;
@@ -179,7 +179,7 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
 		} catch (error) {
 			console.error(`I could not join the voice channel: ${error}`);
 			queue.delete(msg.guild.id);
-			return msg.channel.send(`لا أستطيع دخول هذآ الروم${error}`);
+			return msg.channel.send(`لا أستطيع دخول هذآ الروم ${error}`);
 		}
 	} else {
 		serverQueue.songs.push(song);
@@ -210,7 +210,7 @@ function play(guild, song) {
 		.on('error', error => console.error(error));
 	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 
-	serverQueue.textChannel.send(`ÈÏÁ ÊÔÛíá : **${song.title}**`);
+	serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
 }
 
 const adminprefix = "n";
@@ -226,7 +226,7 @@ if (message.content.startsWith(adminprefix + 'setgame')) {
   if (message.content.startsWith(adminprefix + 'setname')) {
 client.user.setUsername(argresult).then;
     message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`);
-return message.reply("**ا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
+return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
 } else
   if (message.content.startsWith(adminprefix + 'setavatar')) {
 client.user.setAvatar(argresult);
@@ -245,10 +245,10 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-${prefix}vipsetname ? لتغير اسم البوت 
-${prefix}vipsetavatar ? لتغير صورت البوت
-${prefix}vipsets ? لتغير توتش البوت
-${prefix}vipsetgame ? لوضع البوت يلعب اي لعبه
+${prefix}vipsetname ? تغير اسم بوت
+${prefix}vipsetavatar ? تغير صورة بوت
+${prefix}vipsets ? تخلي بوت حالته بنفسجي
+${prefix}vipsetgame ? تخلي حالة بوت يلعب شي
  `);
    message.channel.sendEmbed(embed);
     
@@ -265,8 +265,8 @@ ${prefix}play ? لتشغيل أغنية برآبط أو بأسم
 ${prefix}skip ? لتجآوز الأغنية الحآلية
 ${prefix}pause ? إيقآف الأغنية مؤقتا
 ${prefix}resume ? لموآصلة الإغنية بعد إيقآفهآ مؤقتا
-${prefix}vol ? درجة الصوت 100 - 0
-${prefix}stop ? إخرآج البوت من الروم
+${prefix}vol ? لتغيير درجة الصوت 100 - 0
+${prefix}stop ? لإخرآج البوت من الروم
 ${prefix}np ? لمعرفة الأغنية المشغلة حآليا
 ${prefix}queue ? لمعرفة قآئمة التشغيل
 ${prefix}viphelp ? لمعرفه اوامر vip
