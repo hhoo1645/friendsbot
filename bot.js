@@ -25,7 +25,7 @@ client.on('message', async msg => { // eslint-disable-line
 	if (command === `play`) {
 
 		const voiceChannel = msg.member.voiceChannel;
-		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
+		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي');
 		const permissions = voiceChannel.permissionsFor(msg.client.user);
 		if (!permissions.has('CONNECT')) {
 			
