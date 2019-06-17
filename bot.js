@@ -231,11 +231,7 @@ return message.reply("**لا يمكنك تغيير الاسم يجب عليك ا
   if (message.content.startsWith(adminprefix + 'setavatar')) {
 client.user.setAvatar(argresult);
   message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-      } else     
-if (message.content.startsWith(adminprefix + 'sets')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/idk");
-    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`);
-}
+      }   
 
 });
 
@@ -276,6 +272,11 @@ ${prefix}BY Nefo ? الامر ده بتستخدمه لو تحب نيفوو
     
    }
    }); 
+
+if (message.content.startsWith(prefixac + 'sets')) {
+if(!rebel) return message.channel.send(`**ex ? ${prefixac}sets Hi**`).then(m => m.delete(3000));
+client.user.setActivity(rebel, { type: 'STREAMING', url:'https://twitch.tv/rebel711' });
+message.channel.send("**تـــ تغيير الحالة ــم**");}
 
 
 
