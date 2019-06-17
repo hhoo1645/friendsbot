@@ -212,44 +212,19 @@ function play(guild, song) {
 
 	serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
 }
-
-const adminprefix = "n";
-const devs = ['407244267984125972','407244267984125972'];
-client.on('message', message => {
-  var argresult = message.content.split(` `).slice(1).join(' ');
-    if (!devs.includes(message.author.id)) return;
-    
-if (message.content.startsWith(adminprefix + 'setgame')) {
-  client.user.setGame(argresult);
-    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`);
-} else 
-  if (message.content.startsWith(adminprefix + 'setname')) {
-client.user.setUsername(argresult).then;
-    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`);
-return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
-} else
-  if (message.content.startsWith(adminprefix + 'setavatar')) {
-client.user.setAvatar(argresult);
-  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-      }   
+client.on('ready', () => {
+   console.log(`----------------`);
+      console.log(`Desert Bot- Script By : i1Suhaib`);
+        console.log(`----------------`);
+      console.log(`ON ${client.guilds.size} Servers '     Script By : i1Suhaib ' `);
+    console.log(`----------------`);
+  console.log(`Logged in as ${client.user.tag}!`);
+client.user.setGame(`Kure Friends`,"http://twitch.tv/S-F")
+client.user.setStatus("online")
+});
 
 });
 
-client.on("message", message => {
- if (message.content === `${prefix}viphelp`) {
- 	
-  const embed = new Discord.RichEmbed() 
-      .setColor("#000000")
-      .setDescription(`
-${prefix}vipsetname ? تغير اسم بوت
-${prefix}vipsetavatar ? تغير صورة بوت
-${prefix}vipsets ? تخلي بوت حالته بنفسجي
-${prefix}vipsetgame ? تخلي حالة بوت يلعب شي
- `);
-   message.channel.sendEmbed(embed);
-    
-   }
-   }); 
 
 client.on("message", message => {
  if (message.content === `${prefix}help`) {
@@ -265,20 +240,12 @@ ${prefix}vol ? لتغيير درجة الصوت 100 - 0
 ${prefix}stop ? لإخرآج البوت من الروم
 ${prefix}np ? لمعرفة الأغنية المشغلة حآليا
 ${prefix}queue ? لمعرفة قآئمة التشغيل
-${prefix}viphelp ? لمعرفه اوامر vip
 ${prefix}BY Nefo ? الامر ده بتستخدمه لو تحب نيفوو
 `);
    message.channel.sendEmbed(embed);
     
    }
    }); 
-
-if (message.content.startsWith(prefixac + 'sets')) {
-if(!rebel) return message.channel.send(`**ex ? ${prefixac}sets Hi**`).then(m => m.delete(3000));
-client.user.setActivity(rebel, { type: 'STREAMING', url:'https://twitch.tv/rebel711' });
-message.channel.send("**تـــ تغيير الحالة ــم**");}
-
-
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
